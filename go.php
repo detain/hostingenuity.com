@@ -5,7 +5,7 @@ require_once __DIR__.'/vendor/autoload.php';
 $repos = ['https://github.com/cheat/cheatsheets', 'https://github.com/tldr-pages/tldr'];
 $repoDir = __DIR__.'/repos';
 foreach ($repos as $repo) {
-	$cmd = !file_exists($repoDir.'/'.basename($repo)) ? 'cd '.escapeshellarg($repoDir).'; git clone '.escapeshellarg($repo).';' : 'cd '.escapeshellarg($repoDir.'/'.basename($repo)).'; git pull --all;';
+	$cmd = !file_exists($repoDir.'/'.basename($repo)) ? 'mkdir -p '.escapeshellarg($repoDir).'; cd '.escapeshellarg($repoDir).'; git clone '.escapeshellarg($repo).';' : 'cd '.escapeshellarg($repoDir.'/'.basename($repo)).'; git pull --all;';
 	echo `{$cmd}`;
 }
 $cmds = [];
